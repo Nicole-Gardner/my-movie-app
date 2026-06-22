@@ -6,25 +6,31 @@ const MovieContainer = () => {
   const [searchInput, setSearchInput] = useState("harry potter");
   const [sortOption, setSortOption] = useState("newest");
 
- useEffect(() => {
-  fetchMovies(searchInput);
-}, [searchInput, sortOption]);
 
-  const fetchMovies = async (searchValue) => {
-    const res = await fetch(`https://www.omdbapi.com/?apikey=51106b2b&s=${searchValue}`);
+useEffect(() => {
+  const fetchMovies = async () => {
+    const res = await fetch(`https://www.omdbapi.com/?apikey=51106b2b&s=${searchInput}`);
     const data = await res.json();
+
     if (data.Search) {
       let sortedMovies = data.Search;
+
       if (sortOption === "newest") {
         sortedMovies.sort((a, b) => b.Year - a.Year);
-      } else if (sortOption === "oldest") {
+      } else {
         sortedMovies.sort((a, b) => a.Year - b.Year);
       }
+
       setMovies(sortedMovies);
     } else {
       setMovies([]);
     }
   };
+
+  fetchMovies();
+}, [searchInput, sortOption]);
+
+  
 
   return (
     <div>
