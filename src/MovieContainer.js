@@ -9,7 +9,7 @@ const MovieContainer = () => {
 
 useEffect(() => {
   const fetchMovies = async () => {
-    const res = await fetch(`https://www.omdbapi.com/?apikey=51106b2b&s=${searchInput}`);
+   const res = await fetch(`https://www.omdbapi.com/?apikey=51106b2b&s=${searchInput}`);
     const data = await res.json();
 
     if (data.Search) {
