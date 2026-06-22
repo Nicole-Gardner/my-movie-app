@@ -6,9 +6,9 @@ const MovieContainer = () => {
   const [searchInput, setSearchInput] = useState("harry potter");
   const [sortOption, setSortOption] = useState("newest");
 
-  useEffect(() => {
-    fetchMovies(searchInput);
-  }, [searchInput]);
+ useEffect(() => {
+  fetchMovies(searchInput);
+}, [searchInput, sortOption]);
 
   const fetchMovies = async (searchValue) => {
     const res = await fetch(`https://www.omdbapi.com/?apikey=51106b2b&s=${searchValue}`);
