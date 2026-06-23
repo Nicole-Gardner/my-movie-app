@@ -1,15 +1,15 @@
 // src/MovieContainer.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const MovieContainer = () => {
   const [movies, setMovies] = useState([]);
-  const [searchInput, setSearchInput] = useState("harry potter");
+  const [searchQuery, setSearchQuery] = useState("harry potter");
   const [sortOption, setSortOption] = useState("newest");
 
-
-useEffect(() => {
   const fetchMovies = async () => {
-   const res = await fetch(`https://www.omdbapi.com/?apikey=51106b2b&s=${searchInput}`);
+    const res = await fetch(
+      `https://www.omdbapi.com/?apikey=51106b2b&s=${searchQuery}`,
+    );
     const data = await res.json();
 
     if (data.Search) {
@@ -27,20 +27,25 @@ useEffect(() => {
     }
   };
 
-  fetchMovies();
-}, [searchInput, sortOption]);
-
-  
+  useEffect(() => {
+    fetchMovies();
+  }, [sortOption]);
 
   return (
     <div>
       <input
         type="text"
-        value={searchInput}
-        onChange={(e) => setSearchInput(e.target.value)}
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
         placeholder="Search for movies"
       />
-      <select onChange={(e) => setSortOption(e.target.value)} value={sortOption}>
+      <button className="btn" onClick={fetchMovies}>
+        Search Movie
+      </button>
+      <select
+        onChange={(e) => setSortOption(e.target.value)}
+        value={sortOption}
+      >
         <option value="newest">Newest</option>
         <option value="oldest">Oldest</option>
       </select>
@@ -50,6 +55,10 @@ useEffect(() => {
             <div className="movie" key={movie.imdbID}>
               <h1>{movie.Title}</h1>
               <p>{movie.Year}</p>
+
+              <figure>
+                <img src={movie.Poster} alt={movie.Title} />
+              </figure>
             </div>
           ))
         ) : (
