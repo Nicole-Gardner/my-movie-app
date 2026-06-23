@@ -1,5 +1,6 @@
 // src/MovieContainer.js
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const MovieContainer = () => {
   const [movies, setMovies] = useState([]);
@@ -52,14 +53,16 @@ const MovieContainer = () => {
       <div className="movie__container">
         {movies.length > 0 ? (
           movies.map((movie) => (
-            <div className="movie" key={movie.imdbID}>
-              <h1>{movie.Title}</h1>
-              <p>{movie.Year}</p>
+            <Link to={`/movie/${movie.imdbID}`} key={movie.imdbID}>
+              <div className="movie">
+                <h1>{movie.Title}</h1>
+                <p>{movie.Year}</p>
 
-              <figure>
-                <img src={movie.Poster} alt={movie.Title} />
-              </figure>
-            </div>
+                <figure>
+                  <img src={movie.Poster} alt={movie.Title} />
+                </figure>
+              </div>
+            </Link>
           ))
         ) : (
           <p>No movies found.</p>

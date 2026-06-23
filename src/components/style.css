@@ -25,20 +25,23 @@ h2 {
 
 .nav__container {
   display: flex;
-  justify-content: flex-end;
-  padding: 24px;
-  background-color: #7342d6;
-}
-
-.nav__list {
-  display: flex;
-  gap: 16px;
-  list-style: none;
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 12px 20px; 
+    background-color: #7342d6; 
 }
 
 .nav__links {
-  color: black;
-  font-weight: 700;
+  display: flex; 
+  gap: 16px; 
+  list-style: none; 
+}
+
+.nav__button {
+  padding: 8px 12px; 
+  border: none; 
+  background-color: white;
+  cursor: pointer; 
 }
 
 .nav__link:hover {
@@ -114,10 +117,11 @@ footer p {
     font-size: 36px;
   }
 
-  .movie__poster {
-    width: 100%;
-    max-width: 250px;
-  }
+ .movie-poster {
+  width: 100%; 
+  height: auto; 
+  max-width: 300px; 
+}
 
   /* Animation for movie cards on hover */
 .movie {
@@ -150,4 +154,10 @@ footer p {
   .movie {
     width: 100%;
   }
+}
+
+.movie-title {
+  font-size: 24px; /* Adjust the font size as needed */
+  margin: 10px 0;
+  text-align: center;
 }
