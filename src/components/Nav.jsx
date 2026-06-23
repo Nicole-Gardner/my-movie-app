@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from '../path/to/logo.png'; 
 
 const Nav = () => {
     const handleSearchClick = () => {
@@ -10,7 +9,7 @@ const Nav = () => {
         <nav>
             <div className="nav__container">
                 <a href="/">
-                    <img src={logo} alt="Logo" className="logo" />
+    
                 </a>
                 <ul className="nav__links">
                     <li><a href="/">Home</a></li>
