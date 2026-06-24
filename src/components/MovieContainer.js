@@ -29,8 +29,8 @@ const MovieContainer = () => {
   };
 
   useEffect(() => {
-    fetchMovies();
-  }, [sortOption]);
+  fetchMovies();
+}, [searchQuery, sortOption]);
 
   return (
     <div>
@@ -53,7 +53,7 @@ const MovieContainer = () => {
       <div className="movie__container">
         {movies.length > 0 ? (
           movies.map((movie) => (
-            <Link to={`/movie/${movie.imdbID}`} key={movie.imdbID}>
+            <Link to={`/movies/${movie.imdbID}`}>
               <div className="movie">
                 <h1>{movie.Title}</h1>
                 <p>{movie.Year}</p>
