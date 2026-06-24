@@ -7,49 +7,52 @@ const MovieContainer = () => {
   const [searchQuery, setSearchQuery] = useState("harry potter");
   const [sortOption, setSortOption] = useState("newest");
 
- const fetchMovies = useCallback(async () => {
+  async function fetchMovies() {
     const res = await fetch(
       `https://www.omdbapi.com/?apikey=51106b2b&s=${searchQuery}`,
     );
     const data = await res.json();
 
     if (data.Search) {
-      let sortedMovies = data.Search;
-
-      if (sortOption === "newest") {
-        sortedMovies.sort((a, b) => b.Year - a.Year);
-      } else {
-        sortedMovies.sort((a, b) => a.Year - b.Year);
-      }
-
-      setMovies(sortedMovies);
+      console.log(data.Search);
+      setMovies(data.Search);
     } else {
       setMovies([]);
     }
-  }, [searchQuery, sortOption]);
+  }
 
   useEffect(() => {
-  fetchMovies();
-}, [fetchMovies]);
+    fetchMovies();
+  }, []);
 
   return (
-    <div>
-      <input
-        type="text"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        placeholder="Search for movies"
-      />
-      <button className="btn" onClick={fetchMovies}>
-        Search Movie
-      </button>
-      <select
-        onChange={(e) => setSortOption(e.target.value)}
-        value={sortOption}
-      >
-        <option value="newest">Newest</option>
-        <option value="oldest">Oldest</option>
-      </select>
+    <div class="row">
+      <div className="search__container">
+        <input
+          type="text"
+          value={searchQuery}
+          className="search__container--input"
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search for movies"
+        />
+        <button
+          className="search__container--btn"
+          onClick={() => {
+            fetchMovies();
+          }}
+        >
+          Search Movie
+        </button>
+        <select
+          onChange={(e) => setSortOption(e.target.value)}
+          value={sortOption}
+          className="search__container--sort"
+        >
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+        </select>
+      </div>
+
       <div className="movie__container">
         {movies.length > 0 ? (
           movies.map((movie) => (

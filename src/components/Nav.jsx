@@ -1,4 +1,6 @@
 import React from 'react';
+import flimlogo from "../components/flimlogo.png";
+
 
 const Nav = () => {
     const handleSearchClick = () => {
@@ -9,13 +11,12 @@ const Nav = () => {
         <nav>
             <div className="nav__container">
                 <a href="/">
-    
+                    <img src={flimlogo} alt="Flim Logo" className="nav__logo" />
                 </a>
                 <ul className="nav__links">
                     <li><a href="/">Home</a></li>
                     <li><a href="/about">Movie Titles</a></li>
                     <li><a href="/contact">Contact</a></li>
-                    <li><button className="nav__button" onClick={handleSearchClick}>Search Movie</button></li>
                 </ul>
             </div>
         </nav>
