@@ -1,5 +1,5 @@
 // src/MovieContainer.js
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 
 const MovieContainer = () => {
@@ -7,7 +7,7 @@ const MovieContainer = () => {
   const [searchQuery, setSearchQuery] = useState("harry potter");
   const [sortOption, setSortOption] = useState("newest");
 
-  const fetchMovies = async () => {
+ const fetchMovies = useCallback(async () => {
     const res = await fetch(
       `https://www.omdbapi.com/?apikey=51106b2b&s=${searchQuery}`,
     );
@@ -26,11 +26,11 @@ const MovieContainer = () => {
     } else {
       setMovies([]);
     }
-  };
+  }, [searchQuery, sortOption]);
 
   useEffect(() => {
   fetchMovies();
-}, [searchQuery, sortOption]);
+}, [fetchMovies]);
 
   return (
     <div>
