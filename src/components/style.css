@@ -8,10 +8,11 @@
 
 img {
   width: 100%;
+  height: auto;
 }
 
 h1 {
-  font-size: 56px;
+  font-size: 24px;
   color: #7342d6;
   margin-bottom: 24px;
   text-align: center;
@@ -29,27 +30,34 @@ h2 {
   align-items: center; 
   padding: 12px 20px; 
     background-color: #7342d6; 
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .nav__links {
   display: flex; 
   gap: 16px; 
-  list-style: none; 
+  list-style: none;
+  color: white; 
 }
 
 .nav__button {
   padding: 8px 12px; 
   border: none; 
-  background-color: white;
+  background-color:#7342d6;
   cursor: pointer; 
+  color: white;
+  font-weight: bold;
+    border-radius: 8px;
+
 }
 
 .nav__link:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 p {
   font-size: 16px;
-  color: black;
+  color: white;
   line-height: 1.6;
   font-weight: bold;
   margin-bottom: 16px;
@@ -65,17 +73,19 @@ p {
   margin: 0 auto;
 }
 .movie {
-  width: calc(100%/3);
+  width: (around 250–300px);
+  margin: 8px;
   text-align: center;
-  padding: 24px;
+  padding: 14px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.movie__poster {
-  width: 100%;
+.movie-poster {
+  width: 75%;
   border-radius: 8px;
+  flex-direction: row;
 }
 
 .movie__info {
@@ -83,11 +93,25 @@ p {
 }
 
 footer {
-  background-color: #7342d6;
-  padding: 24px;
+    text-align: center;
+    padding: 20px;
+    background-color: #7342d6; 
+    color: white; 
 }
 footer p {
   color: white;
+  background-color: #7342d6;
+  text-align: center;
+}
+
+.footer-logo {
+  width: 200px; 
+  height: auto; 
+  margin-bottom: 8px;
+  border-radius: 8px;
+  margin-top: 8px;
+  margin-left: 8px; 
+  justify-content: center;
 }
 
 .search__container {
@@ -105,20 +129,21 @@ footer p {
   font-size: 16px;
   outline: none;
 }
+@media (max-width: 768px)
 
 /* SMALL PHONES, TABLETS, LARGE SMARTPHONES */
-@media (max-width: 768px) {
+ {
   .movie__container {
     flex-direction: column;
     text-align: center;
   }
 
   h1 {
-    font-size: 36px;
+    font-size: 14px;
   }
 
  .movie-poster {
-  width: 100%; 
+  width: 75%; 
   height: auto; 
   max-width: 300px; 
 }
@@ -152,7 +177,7 @@ footer p {
 /* SMALL PHONES, LARGE SMARTPHONES */
 @media (max-width: 480px) {
   .movie {
-    width: 100%;
+    width: 75%;
   }
 }
 

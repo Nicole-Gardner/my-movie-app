@@ -9,7 +9,7 @@ const MovieDetail = () => {
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const response = await fetch(`https://api.example.com/movies/${id}`); // Replace with your API
+        const response = await fetch(`https://api.example.com/movies/i=${id}`); // Replace with your API
         const data = await response.json();
         setMovie(data);
         setLoading(false);
