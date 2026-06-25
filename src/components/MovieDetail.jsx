@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const MovieDetail = () => {
   const { id } = useParams(); // Get the movie ID from the URL
@@ -9,8 +9,11 @@ const MovieDetail = () => {
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const response = await fetch(`https://www.omdbapi.com/?apikey=51106b2b&i=${id}`); // Replace with your API
+        const response = await fetch(
+          `https://www.omdbapi.com/?apikey=51106b2b&i=${id}`,
+        ); // Replace with your API
         const data = await response.json();
+        console.log(data);
         setMovie(data);
         setLoading(false);
       } catch (error) {
@@ -26,9 +29,16 @@ const MovieDetail = () => {
   if (!movie) return <div>Movie not found!</div>;
 
   return (
-    <div>
-      <h1>{movie.Title}</h1>
-      <p>{movie.Plot}</p>
+    <div className="movie-details">
+      <div className="row">
+        <figure className="movie-info__img--wrapper">
+          <img src={movie.Poster} alt="" />
+        </figure>
+        <div className="movie__description">
+          <h1>{movie.Title}</h1>
+          <p>{movie.Plot}</p>
+        </div>
+      </div>
       {/* Add other movie details as needed */}
     </div>
   );

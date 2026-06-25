@@ -6,28 +6,29 @@ const MovieContainer = () => {
   const [movies, setMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState("harry potter");
   const [sortOption, setSortOption] = useState("newest");
-const fetchMovies = useCallback(async () => {
-  const res = await fetch(
-    `https://www.omdbapi.com/?apikey=51106b2b&s=${searchQuery}`
-  );
-  const data = await res.json();
 
-  if (data.Search) {
-    setMovies(data.Search);
-  } else {
-    setMovies([]);
+  async function fetchMovies() {
+    const res = await fetch(
+      `https://www.omdbapi.com/?apikey=51106b2b&s=${searchQuery}`,
+    );
+    const data = await res.json();
+
+    if (data.Search) {
+      setMovies(data.Search);
+    } else {
+      setMovies([]);
+    }
   }
-}, [searchQuery]);
 
-useEffect(() => {
-  fetchMovies();
-}, [fetchMovies]);
+  useEffect(() => {
+    fetchMovies();
+  }, []);
 
-const sortedMovies = [...movies].sort((a, b) => {
-  const yearA = parseInt(a.Year, 10);
-  const yearB = parseInt(b.Year, 10);
-  return sortOption === "newest" ? yearB - yearA : yearA - yearB;
-});
+  const sortedMovies = [...movies].sort((a, b) => {
+    const yearA = parseInt(a.Year, 10);
+    const yearB = parseInt(b.Year, 10);
+    return sortOption === "newest" ? yearB - yearA : yearA - yearB;
+  });
   return (
     <div className="row">
       <div className="search__container">
@@ -38,10 +39,7 @@ const sortedMovies = [...movies].sort((a, b) => {
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search for movies"
         />
-        <button
-          className="search__container--btn"
-          onClick={fetchMovies}
-        >
+        <button className="search__container--btn" onClick={fetchMovies}>
           Search Movie
         </button>
         <select
@@ -69,7 +67,7 @@ const sortedMovies = [...movies].sort((a, b) => {
             </Link>
           ))
         ) : (
-          <p>No movies found.</p>
+          <p>Loading Movies...</p>
         )}
       </div>
     </div>

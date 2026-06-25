@@ -14,7 +14,7 @@ const Nav = () => {
                 <ul className="nav__links">
                     <li><a href="/">Home</a></li>
                     <li><a href="/about">Movie Titles</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/">Contact</a></li>
                 </ul>
             </div>
         </nav>

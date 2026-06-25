@@ -6,16 +6,19 @@
   font-family: "Roboto", sans-serif;
 }
 
-
 h1 {
   font-size: 24px;
   color: navy;
   margin-bottom: 24px;
   text-align: center;
 }
+
+img {
+  width: 100%;
+}
 h2 {
   font-size: 18px;
-  color:navy ;
+  color: navy;
   margin-bottom: 16px;
   text-align: center;
 }
@@ -28,23 +31,23 @@ h2 {
 
 .nav__container {
   display: flex;
-  justify-content: space-between; 
-  align-items: center; 
-  padding: 12px 20px; 
-    background-color:  #A86F15; 
-    flex-wrap: wrap;
-    flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: #a86f15;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 .nav__logo {
-    width: 100px; 
-    height: auto; 
-    margin-right: 20px; 
+  width: 100px;
+  height: auto;
+  margin-right: 20px;
 }
 .nav__links {
-  display: flex; 
-  gap: 16px; 
+  display: flex;
+  gap: 16px;
   list-style: none;
-  color: black; 
+  color: black;
 }
 
 .nav__link:hover {
@@ -89,24 +92,24 @@ p {
 }
 
 footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #A86F15;
-    color: black; 
+  text-align: center;
+  padding: 20px;
+  background-color: #a86f15;
+  color: black;
 }
 footer p {
   color: black;
-  background-color:   #A86F15;
+  background-color: #a86f15;
   text-align: center;
 }
 
 .footer-logo {
-  width: 200px; 
-  height: auto; 
+  width: 200px;
+  height: auto;
   margin-bottom: 8px;
   border-radius: 8px;
   margin-top: 8px;
-  margin-left: 8px; 
+  margin-left: 8px;
   justify-content: center;
 }
 
@@ -117,23 +120,41 @@ footer p {
   margin: 32px 0;
   flex-wrap: wrap;
 }
-@media (max-width: 768px)
 .search__container--input,
 .search__container--btn,
 .search__container--sort {
   padding: 12px 16px;
-  border: 2px solid black; 
+  border: 2px solid black;
   border-radius: 12px;
   font-size: 16px;
   font-weight: bold;
   outline: none;
-    background-color: #A86F15;
+  background-color: #a86f15;
   color: navy;
 }
 
-@media (max-width: 768px) 
-/* SMALL PHONES, TABLETS, LARGE SMARTPHONES */
- {
+.movie__description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+}
+
+.movie-info__img--wrapper {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+.movie-details {
+  display: flex;
+  margin: 24px 0;
+}
+
+.movie-details .row{
+  display: flex;
+}
+@media (max-width: 768px) {
   .movie__container {
     flex-direction: column;
     text-align: center;
@@ -144,31 +165,41 @@ footer p {
   }
 
   /* Animation for movie cards on hover */
-.movie {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+  .movie {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
 
-.movie:hover {
+  .movie:hover {
     transform: scale(1.05); /* Enlarge slightly on hover */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
-}
+  }
 
-/* Fade-in animation for movie cards */
-@keyframes fadeIn {
+  .movie-details .row {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  /* Fade-in animation for movie cards */
+  @keyframes fadeIn {
     from {
-        opacity: 0;
-        transform: translateY(20px);
+      opacity: 0;
+      transform: translateY(20px);
     }
     to {
-        opacity: 1;
-        transform: translateY(0);
+      opacity: 1;
+      transform: translateY(0);
     }
-}
+  }
 
-.movie {
+  .movie {
     animation: fadeIn 0.5s ease forwards; /* Apply fade-in animation */
+    margin: 0 auto;
+  }
 }
- }
 
 /* SMALL PHONES, LARGE SMARTPHONES */
 @media (max-width: 480px) {
@@ -182,3 +213,4 @@ footer p {
   margin: 10px 0;
   text-align: center;
 }
+
