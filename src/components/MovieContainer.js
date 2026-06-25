@@ -36,7 +36,7 @@ useEffect(() => {
         <button
           className="search__container--btn"
           onClick={() => {
-            fetchMovies();
+            setSearchQuery(searchQuery);
           }}
         >
           Search Movie
