@@ -1,5 +1,5 @@
 // src/MovieContainer.js
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState,} from "react";
 import { Link } from "react-router-dom";
 
 const MovieContainer = () => {
@@ -22,6 +22,7 @@ const MovieContainer = () => {
 
   useEffect(() => {
     fetchMovies();
+    // eslint-disable-next-line
   }, []);
 
   const sortedMovies = [...movies].sort((a, b) => {
