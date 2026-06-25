@@ -115,7 +115,9 @@ footer p {
   justify-content: center;
   gap: 16px;
   margin: 32px 0;
+  flex-wrap: wrap;
 }
+@media (max-width: 768px)
 .search__container--input,
 .search__container--btn,
 .search__container--sort {

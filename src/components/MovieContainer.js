@@ -23,6 +23,11 @@ useEffect(() => {
   fetchMovies();
 }, [fetchMovies]);
 
+const sortedMovies = [...movies].sort((a, b) => {
+  const yearA = parseInt(a.Year, 10);
+  const yearB = parseInt(b.Year, 10);
+  return sortOption === "newest" ? yearB - yearA : yearA - yearB;
+});
   return (
     <div className="row">
       <div className="search__container">
@@ -50,8 +55,8 @@ useEffect(() => {
       </div>
 
       <div className="movie__container">
-        {movies.length > 0 ? (
-          movies.map((movie) => (
+        {sortedMovies.length > 0 ? (
+          sortedMovies.map((movie) => (
             <Link to={`/movies/${movie.imdbID}`} key={movie.imdbID}>
               <div className="movie">
                 <h1>{movie.Title}</h1>
