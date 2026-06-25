@@ -21,10 +21,9 @@ const MovieContainer = () => {
     }
   }
 
-  useEffect(() => {
-    fetchMovies();
-  }, []);
-
+ useEffect(() => {
+  fetchMovies();
+}, [searchQuery]);
   return (
     <div className="row">
       <div className="search__container">

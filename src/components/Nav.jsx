@@ -3,9 +3,7 @@ import flimlogo from "../components/flimlogo.png";
 
 
 const Nav = () => {
-    const handleSearchClick = () => {
-        console.log("Search button clicked");
-    };
+    
 
     return (
         <nav>
