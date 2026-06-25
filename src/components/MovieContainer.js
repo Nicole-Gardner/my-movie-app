@@ -1,27 +1,27 @@
 // src/MovieContainer.js
-import React, { useEffect, useState,} from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 
 const MovieContainer = () => {
   const [movies, setMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState("harry potter");
   const [sortOption, setSortOption] = useState("newest");
-useEffect(() => {
-  const fetchMovies = async () => {
-    const res = await fetch(
-      `https://www.omdbapi.com/?apikey=51106b2b&s=${searchQuery}`
-    );
-    const data = await res.json();
+const fetchMovies = useCallback(async () => {
+  const res = await fetch(
+    `https://www.omdbapi.com/?apikey=51106b2b&s=${searchQuery}`
+  );
+  const data = await res.json();
 
-    if (data.Search) {
-      setMovies(data.Search);
-    } else {
-      setMovies([]);
-    }
-  };
-
-  fetchMovies();
+  if (data.Search) {
+    setMovies(data.Search);
+  } else {
+    setMovies([]);
+  }
 }, [searchQuery]);
+
+useEffect(() => {
+  fetchMovies();
+}, [fetchMovies]);
 
   return (
     <div className="row">
@@ -35,9 +35,7 @@ useEffect(() => {
         />
         <button
           className="search__container--btn"
-          onClick={() => {
-            setSearchQuery(searchQuery);
-          }}
+          onClick={fetchMovies}
         >
           Search Movie
         </button>
