@@ -6,20 +6,16 @@
   font-family: "Roboto", sans-serif;
 }
 
-img {
-  width: 100%;
-  height: auto;
-}
 
 h1 {
   font-size: 24px;
-  color: #7342d6;
+  color: navy;
   margin-bottom: 24px;
   text-align: center;
 }
 h2 {
   font-size: 18px;
-  color: #7342d6;
+  color:navy ;
   margin-bottom: 16px;
   text-align: center;
 }
@@ -72,7 +68,7 @@ p {
   margin: 0 auto;
 }
 .movie {
-  width: (around 250–300px);
+  width: 280px;
   margin: 8px;
   text-align: center;
   padding: 14px;
@@ -81,10 +77,11 @@ p {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.movie-poster {
-  width: 75%;
+.movie img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
   border-radius: 8px;
-  flex-direction: row;
 }
 
 .movie__info {
@@ -123,13 +120,16 @@ footer p {
 .search__container--btn,
 .search__container--sort {
   padding: 12px 16px;
-  border: 2px solid #7342d6;
-  border-radius: 8px;
+  border: 2px solid black; 
+  border-radius: 12px;
   font-size: 16px;
+  font-weight: bold;
   outline: none;
+    background-color: #A86F15;
+  color: navy;
 }
-@media (max-width: 768px)
 
+@media (max-width: 768px) 
 /* SMALL PHONES, TABLETS, LARGE SMARTPHONES */
  {
   .movie__container {
@@ -140,12 +140,6 @@ footer p {
   h1 {
     font-size: 14px;
   }
-
- .movie-poster {
-  width: 75%; 
-  height: auto; 
-  max-width: 300px; 
-}
 
   /* Animation for movie cards on hover */
 .movie {
@@ -172,6 +166,7 @@ footer p {
 .movie {
     animation: fadeIn 0.5s ease forwards; /* Apply fade-in animation */
 }
+ }
 
 /* SMALL PHONES, LARGE SMARTPHONES */
 @media (max-width: 480px) {

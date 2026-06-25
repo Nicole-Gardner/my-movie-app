@@ -9,7 +9,7 @@ const MovieDetail = () => {
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const response = await fetch(`https://api.example.com/movies/i=${id}`); // Replace with your API
+        const response = await fetch(`https://www.omdbapi.com/?apikey=51106b2b&i=${id}`); // Replace with your API
         const data = await response.json();
         setMovie(data);
         setLoading(false);
@@ -27,8 +27,8 @@ const MovieDetail = () => {
 
   return (
     <div>
-      <h1>{movie.title}</h1>
-      <p>{movie.description}</p>
+      <h1>{movie.Title}</h1>
+      <p>{movie.Plot}</p>
       {/* Add other movie details as needed */}
     </div>
   );

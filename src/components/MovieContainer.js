@@ -1,5 +1,5 @@
 // src/MovieContainer.js
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState,} from "react";
 import { Link } from "react-router-dom";
 
 const MovieContainer = () => {
@@ -26,7 +26,7 @@ const MovieContainer = () => {
   }, []);
 
   return (
-    <div class="row">
+    <div className="row">
       <div className="search__container">
         <input
           type="text"
@@ -56,7 +56,7 @@ const MovieContainer = () => {
       <div className="movie__container">
         {movies.length > 0 ? (
           movies.map((movie) => (
-            <Link to={`/movies/${movie.imdbID}`}>
+            <Link to={`/movies/${movie.imdbID}`} key={movie.imdbID}>
               <div className="movie">
                 <h1>{movie.Title}</h1>
                 <p>{movie.Year}</p>
