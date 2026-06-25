@@ -6,24 +6,23 @@ const MovieContainer = () => {
   const [movies, setMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState("harry potter");
   const [sortOption, setSortOption] = useState("newest");
-
-  async function fetchMovies() {
+useEffect(() => {
+  const fetchMovies = async () => {
     const res = await fetch(
-      `https://www.omdbapi.com/?apikey=51106b2b&s=${searchQuery}`,
+      `https://www.omdbapi.com/?apikey=51106b2b&s=${searchQuery}`
     );
     const data = await res.json();
 
     if (data.Search) {
-      console.log(data.Search);
       setMovies(data.Search);
     } else {
       setMovies([]);
     }
-  }
+  };
 
- useEffect(() => {
   fetchMovies();
 }, [searchQuery]);
+
   return (
     <div className="row">
       <div className="search__container">
